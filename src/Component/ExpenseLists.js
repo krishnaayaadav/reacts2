@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 import { expenseListApiService } from '../ApiServices/ExpenseApiServices';
 
-export default function ExpenseList(){
+export default function ExpenseList(props){
 
     const [expenseList, setExpenseList] = useState([]);
 
@@ -14,16 +14,16 @@ export default function ExpenseList(){
             // if valid response as status 200 ok response
             if(response.status == 200){
                 // console.log(response.data);
-                setExpenseList(response.data)
+                setExpenseList(response.data) 
+                props.setUpdated(false);
 
             }
             
         }, (errors => {
             console.log(errors)
         })  )
-    }, [expenseList.length] )
+    }, [expenseList.length, props.statusChange] )
 
-    console.log(expenseList)
 
     return(
         <table class="table table-hover text-white">
@@ -43,7 +43,7 @@ export default function ExpenseList(){
 
                  {
                     expenseList.map( expense => (
-                        <ExpenseItem key={expense.pk} expense={expense} />
+                        <ExpenseItem key={expense.pk} expense={expense} setUpdated={props.setUpdated} />
                     ) )
                 }
 
