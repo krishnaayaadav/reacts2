@@ -32,8 +32,16 @@ function deleteExpenseItemService(expenseId){
     return axios.delete(postURL)
 } 
 
+
+// Update Expense Item  Services
+function updateExpenseItemService(expenseId, expData){ 
+    const postURL = 'http://127.0.0.1:8000/expense/api/expense/update/'+expenseId + '/';
+    return axios.patch(postURL, {...expData})
+} 
+
 export {
-    expenseListApiService, // expense list api services
-    addExpenseItemService, // expense post api services
-    deleteExpenseItemService, // delete expense api service
+    expenseListApiService,       // expense list api services
+    addExpenseItemService,      // expense post api services
+    deleteExpenseItemService,  // delete expense api service
+    updateExpenseItemService, // update expense api service
 }

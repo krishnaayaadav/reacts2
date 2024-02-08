@@ -4,7 +4,8 @@ import { deleteExpenseItemService } from '../ApiServices/ExpenseApiServices';
 export default function ExpenseItem(props){
     // console.log(props.expense);
     const expense = props.expense;
-
+    
+    // expense delete handler
     const deleteHandler = () => {
         deleteExpenseItemService(expense.pk).then( response => {
 
@@ -18,6 +19,13 @@ export default function ExpenseItem(props){
 
     }
 
+    // update data caller
+    const updateExpenseCaller = ()=> {
+        // console.log('Update date is called', expense)
+        props.setEdited(expense); // updating the data
+        // console.log(props.setEdited)
+    }
+
 
     return(
                 <tr className="text-white">
@@ -29,7 +37,7 @@ export default function ExpenseItem(props){
                     <td> {expense.exp_description} </td>
                     <td>
                         <span>
-                            <button className="btn btn-outline-primary edt-btn">Edit</button>  <br></br>
+                            <button className="btn btn-outline-primary" onClick={updateExpenseCaller}  >Edit</button>  <br></br>
                             <button className="btn btn-outline-danger" onClick={deleteHandler}  >Delete </button>
                         </span>
                     </td>

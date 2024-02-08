@@ -47,7 +47,10 @@ export default function ExpenseForm(props){
 
 
     return(
-        <form onSubmit={submitHandler}>
+        <>
+            <h3 className="offset-1">Add New Expense!</h3>
+        
+            <form onSubmit={submitHandler}>
 
             <div className="mb-3">
                 <label className="form-label">Expense Title</label>
@@ -78,8 +81,9 @@ export default function ExpenseForm(props){
             </div>
 
             
-            <button type="submit" className="btn btn-primary" onClick={submitHandler} >Submit</button>
-      </form>
+            <button type="submit" className="btn btn-primary" onClick={submitHandler} >Add New Expense</button>
+            </form>
+        </>
   
     )
 

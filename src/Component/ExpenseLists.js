@@ -43,7 +43,7 @@ export default function ExpenseList(props){
 
                  {
                     expenseList.map( expense => (
-                        <ExpenseItem key={expense.pk} expense={expense} setUpdated={props.setUpdated} />
+                        <ExpenseItem key={expense.pk} expense={expense} setUpdated={props.setUpdated}  setEdited={props.setEdited}/>
                     ) )
                 }
 
